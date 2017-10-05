@@ -104,5 +104,10 @@
                 Process.Start(e.Url.ToString());
             }
         }
+
+        private void btnOpenFolder_Click(object sender, System.EventArgs e)
+        {
+            Process.Start("explorer.exe", this.tbDirectory.Text);
+        }
     }
 }

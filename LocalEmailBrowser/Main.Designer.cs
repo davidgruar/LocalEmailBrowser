@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.emailList = new System.Windows.Forms.ListView();
             this.headerSubject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headerDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,7 +46,7 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label6 = new System.Windows.Forms.Label();
             this.tbDirectory = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnOpenFolder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // emailList
@@ -187,7 +186,6 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.ContextMenuStrip = this.contextMenuStrip1;
             this.webBrowser1.Location = new System.Drawing.Point(515, 157);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
@@ -208,19 +206,25 @@
             // 
             this.tbDirectory.Location = new System.Drawing.Point(68, 13);
             this.tbDirectory.Name = "tbDirectory";
-            this.tbDirectory.Size = new System.Drawing.Size(432, 20);
+            this.tbDirectory.Size = new System.Drawing.Size(328, 20);
             this.tbDirectory.TabIndex = 16;
             // 
-            // contextMenuStrip1
+            // btnOpenFolder
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.btnOpenFolder.Location = new System.Drawing.Point(402, 13);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(98, 23);
+            this.btnOpenFolder.TabIndex = 17;
+            this.btnOpenFolder.Text = "Open Folder";
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 614);
+            this.Controls.Add(this.btnOpenFolder);
             this.Controls.Add(this.tbDirectory);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.webBrowser1);
@@ -264,7 +268,7 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbDirectory;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button btnOpenFolder;
     }
 }
 
