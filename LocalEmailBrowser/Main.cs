@@ -46,11 +46,19 @@
             this.lblTo.Text = message?.To.ToString();
             this.lblDate.Text = message?.Date.ToString("F");
             this.lblSubject.Text = message?.Subject;
-            this.webBrowser1.Navigate("about:blank");
-            this.webBrowser1.Document?.OpenNew(false);
-            this.webBrowser1.Document?.Write(message?.HtmlBody ?? string.Empty);
-            this.webBrowser1.Refresh();
+            this.DisplayHtmlBody(message);
             this.lblAttachments.Text = this.GetAttachmentDetails(message);
+        }
+
+        private void DisplayHtmlBody(MimeMessage message)
+        {
+            this.webBrowser1.Navigate("about:blank");
+            if (message != null)
+            {
+                this.webBrowser1.Document?.OpenNew(false);
+                this.webBrowser1.Document?.Write(message.HtmlBody);
+            }
+            this.webBrowser1.Refresh();
         }
 
         private string GetAttachmentDetails(MimeMessage message)
