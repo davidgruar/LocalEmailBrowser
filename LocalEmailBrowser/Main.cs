@@ -1,5 +1,6 @@
 ﻿namespace LocalEmailBrowser
 {
+    using System;
     using System.Diagnostics;
     using System.Linq;
     using System.Windows.Forms;
@@ -29,10 +30,23 @@
             this.messages = this.mailStore.GetAll(this.tbDirectory.Text)
                 .OrderByDescending(m => m.Message.Date)
                 .ToArray();
+            this.FilterEmailList();
+        }
 
-            var items = this.messages
-                .Select(m => m.Message)
-                .Select(m => new ListViewItem(new[] {m.Subject, m.Date.ToString("G")}))
+        private void FilterEmailList()
+        {
+            var query = this.messages.Select(m => m.Message);
+
+            var searchTerm = this.tbSearch.Text;
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(m => 
+                    m.Subject.IndexOf(searchTerm, StringComparison.CurrentCultureIgnoreCase) > 0
+                    || m.TextBody.IndexOf(searchTerm, StringComparison.CurrentCultureIgnoreCase) > 0);
+            }
+
+            var items = query
+                .Select(m => new ListViewItem(new[] { m.Subject, m.Date.ToString("G") }))
                 .ToArray();
 
             this.emailList.Items.Clear();
@@ -108,6 +122,11 @@
         private void btnOpenFolder_Click(object sender, System.EventArgs e)
         {
             Process.Start("explorer.exe", this.tbDirectory.Text);
+        }
+
+        private void tbSearch_TextChanged(object sender, System.EventArgs e)
+        {
+            this.FilterEmailList();
         }
     }
 }

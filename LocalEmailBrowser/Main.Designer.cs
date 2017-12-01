@@ -47,6 +47,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbDirectory = new System.Windows.Forms.TextBox();
             this.btnOpenFolder = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // emailList
@@ -54,10 +56,10 @@
             this.emailList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.headerSubject,
             this.headerDate});
-            this.emailList.Location = new System.Drawing.Point(12, 46);
+            this.emailList.Location = new System.Drawing.Point(12, 66);
             this.emailList.MultiSelect = false;
             this.emailList.Name = "emailList";
-            this.emailList.Size = new System.Drawing.Size(488, 555);
+            this.emailList.Size = new System.Drawing.Size(488, 535);
             this.emailList.TabIndex = 0;
             this.emailList.UseCompatibleStateImageBehavior = false;
             this.emailList.View = System.Windows.Forms.View.Details;
@@ -219,11 +221,30 @@
             this.btnOpenFolder.UseVisualStyleBackColor = true;
             this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
+            // tbSearch
+            // 
+            this.tbSearch.Location = new System.Drawing.Point(68, 39);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(328, 20);
+            this.tbSearch.TabIndex = 18;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Search";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 614);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.btnOpenFolder);
             this.Controls.Add(this.tbDirectory);
             this.Controls.Add(this.label6);
@@ -269,6 +290,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbDirectory;
         private System.Windows.Forms.Button btnOpenFolder;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Label label7;
     }
 }
 
