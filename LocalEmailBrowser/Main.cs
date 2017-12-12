@@ -49,8 +49,13 @@
                 .Select(m => new ListViewItem(new[] { m.Subject, m.Date.ToString("G") }))
                 .ToArray();
 
+            var selectedIndex = this.emailList.SelectedIndices.Cast<int>().FirstOrDefault();
             this.emailList.Items.Clear();
             this.emailList.Items.AddRange(items);
+            if (items.Length > 0)
+            {
+                this.emailList.SelectedIndices.Add(Math.Min(selectedIndex, items.Length - 1));
+            }
         }
 
         private void PopulateMessageDetails()
@@ -62,6 +67,7 @@
             this.lblSubject.Text = message?.Subject;
             this.DisplayHtmlBody(message);
             this.lblAttachments.Text = this.GetAttachmentDetails(message);
+            this.btnDelete.Enabled = message != null;
         }
 
         private void DisplayHtmlBody(MimeMessage message)
@@ -91,7 +97,7 @@
             return string.Join("\r\n", filenames);
         }
 
-        private void emailList_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void emailList_SelectedIndexChanged(object sender, EventArgs e)
         {
             var isMessageSelected = this.emailList.SelectedIndices.Count > 0;
             this.btnOpen.Enabled = isMessageSelected;
@@ -99,12 +105,12 @@
             this.PopulateMessageDetails();
         }
 
-        private void btnRefresh_Click(object sender, System.EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
             this.PopulateEmailList();
         }
 
-        private void btnOpen_Click(object sender, System.EventArgs e)
+        private void btnOpen_Click(object sender, EventArgs e)
         {
             var path = this.selectedMessage.Path;
             Process.Start(path);
@@ -119,14 +125,20 @@
             }
         }
 
-        private void btnOpenFolder_Click(object sender, System.EventArgs e)
+        private void btnOpenFolder_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", this.tbDirectory.Text);
         }
 
-        private void tbSearch_TextChanged(object sender, System.EventArgs e)
+        private void tbSearch_TextChanged(object sender, EventArgs e)
         {
             this.FilterEmailList();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            this.mailStore.Delete(this.selectedMessage.Path);
+            this.PopulateEmailList();
         }
     }
 }

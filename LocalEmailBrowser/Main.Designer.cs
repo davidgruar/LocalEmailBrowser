@@ -49,6 +49,7 @@
             this.btnOpenFolder = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // emailList
@@ -160,9 +161,9 @@
             // btnOpen
             // 
             this.btnOpen.Enabled = false;
-            this.btnOpen.Location = new System.Drawing.Point(922, 20);
+            this.btnOpen.Location = new System.Drawing.Point(929, 20);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(99, 25);
+            this.btnOpen.Size = new System.Drawing.Size(92, 25);
             this.btnOpen.TabIndex = 11;
             this.btnOpen.Text = "Open Message";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -238,11 +239,22 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Search";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(963, 52);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(57, 23);
+            this.btnDelete.TabIndex = 20;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 614);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.btnOpenFolder);
@@ -292,6 +304,7 @@
         private System.Windows.Forms.Button btnOpenFolder;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

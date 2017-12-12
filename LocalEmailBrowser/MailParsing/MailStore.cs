@@ -17,5 +17,10 @@
             var files = Directory.GetFiles(directory, "*.eml");
             return files.Select(path => new MessageData { Path = path, Message = MimeMessage.Load(path) });
         }
+
+        public void Delete(string path)
+        {
+            File.Delete(path);
+        }
     }
 }
